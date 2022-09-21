@@ -2,19 +2,44 @@
 // 0, 7, 8, -2, -2 -> 2
 // 1, -7, 567, 89, 223-> 3
 
-Console.Write("Введите элементы(через пробел): ");
-int[] arr = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-int count = 0;
- 
-for (int i = 0; i < arr.Length; i++)
-{
-    if (arr[i] > 0)
-    {
-        count++;
-    }
-}
- 
-Console.WriteLine($"Кол-во элементов > 0: {count}");
+Console.WriteLine ("Введите числа:");
 
+string numbers = Console.ReadLine();
+
+string [] newNumbers = new string [numbers.Length];
+int k = 0;
+for (int i = 0; i < newNumbers.Length; i++)
+{
+  if (numbers[i] == ',')
+  {
+    k++;
+  }
+  else
+  {
+    newNumbers[k] = newNumbers[k]+$"{numbers[i]}";
+  }
+}
+k++;
+int [] resultNumbers = new int[k];
+PrintArray (resultNumbers, newNumbers);
+int sum = 0;
+for (int i = 0; i < k; i++)
+{
+  if (resultNumbers[i]>0)
+  {
+    sum++;
+  }
+}
+Console.WriteLine ("Количество чисел больше 0: "+sum);
+
+void PrintArray (int [] array, string [] string1)
+{
+  for (int i = 0; i < array.Length; i++)
+  {
+  array[i] = Convert.ToInt32(string1[i]);
+  Console.Write (array[i]+"  ");
+  }
+Console.WriteLine();
+}
 
  
